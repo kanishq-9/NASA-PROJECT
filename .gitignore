@@ -1,0 +1,6 @@
+client/nasafrontend/node_modules
+server/node_modules
+*.tmp
+*.log
+*.swp
+*.lock
