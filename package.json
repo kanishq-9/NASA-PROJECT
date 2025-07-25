@@ -8,6 +8,7 @@
     "install":"npm run install-server && npm run install-client",
     "server":"npm run watch --prefix server",
     "client":"npm start --prefix client/nasafrontend",
+    "deploy":"npm run build --prefix client/nasafrontend && npm start --prefix server",
     "watch":"npm run server & npm run client",
     "test": "npm run test --prefix server && npm run test --prefix client/nasafrontend "
   },
