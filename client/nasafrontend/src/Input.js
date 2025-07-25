@@ -6,13 +6,13 @@ import Button from "./inputFiles/Button";
 import RocketType from "./inputFiles/RocketType";
 import Destination from "./inputFiles/Destination";
 
-export default function Input() {
+export default function Input({dataState}) {
   return (
     <div className="input-data title is-1">
       <LaunchDate />
       <MissionName />
       <RocketType />
-      <Destination />
+      <Destination dataState={dataState} />
       <Button />
       <RotatingPlanet />
     </div>

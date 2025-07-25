@@ -30,8 +30,7 @@ function loadPlanetsData() {
         reject(err);
       })
       .on("end", () => {
-        resolve();
-        console.log(planets.length)
+        resolve();      
       });
   });
 }
