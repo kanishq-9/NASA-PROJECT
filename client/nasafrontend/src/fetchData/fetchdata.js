@@ -1,8 +1,6 @@
-async function fetchPlanetData(url){
-    const response = await fetch(url);
-    const newdata = await response.json();
-    return newdata;
+async function fetchURLData(url, end) {
+  const response = await fetch(`${url}/${end}`);
+  const newdata = await response.json();
+  return newdata;
 }
-export {
-    fetchPlanetData
-}
+export { fetchURLData };

@@ -1,0 +1,14 @@
+#error {
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    right:0;
+    
+    background-color: rgb(243, 67, 67);
+    color: white;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -60,3 +60,14 @@ animation-timing-function: linear;
     border-color: grey;
     background-color: rgb(164 142 142/0.5);
 }
+
+.fade-hidden {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    /* 1 second fade-in duration */
+}
+
+.fade-visible {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}

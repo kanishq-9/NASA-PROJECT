@@ -1,4 +1,12 @@
-export default function History() {
+import { useSpring, animated } from "react-spring";
+
+export default function History({ dataState }) {
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    config: { duration: 500 },
+  });
+
   const tableHeader = ["No", "Date", "Mission", "Rocket", "Customer"];
   const displayHeader = () => {
     return tableHeader.map((title) => (
@@ -7,13 +15,31 @@ export default function History() {
       </th>
     ));
   };
+
+  const displayBody = () => {
+    dataState.sort((a, b) => a.rocketNumber - b.rocketNumber);
+    return dataState.map((data) => {
+      if (!data.upcoming) return null;
+      return (
+        <tr className={data.success ? "is-success" : "is-danger"}>
+          <td>{data.rocketNumber}</td>
+          <td>{data.launchDate}</td>
+          <td>{data.mission}</td>
+          <td>{data.rocket}</td>
+          <td>{data.customer.join(", ")}</td>
+        </tr>
+      );
+    });
+  };
+
   return (
-    <div className="table-container">
+    <animated.div className="table-container" style={props}>
       <table className="nasa-main table is-striped is-hoverable">
         <thead>
           <tr>{displayHeader()}</tr>
         </thead>
+        <tbody>{displayBody()}</tbody>
       </table>
-    </div>
+    </animated.div>
   );
 }
