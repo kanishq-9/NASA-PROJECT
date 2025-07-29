@@ -35,9 +35,14 @@ function loadPlanetsData() {
   });
 }
 
+function getPlanetsData() {
+  return planets;
+}
+
+
 module.exports = {
   loadPlanetsData,
-  planets,
+  getPlanetsData,
 };
 
 //the stream is an asynchronous, so whenever this module is called it loads the planet export before stream has completed because it is asychronous.. Hence we use promise

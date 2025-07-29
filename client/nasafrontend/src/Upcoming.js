@@ -32,7 +32,11 @@ export default function Upcoming({ dataState }) {
   };
 
   return (
-    <animated.div className="table-container" style={props}>
+    <animated.div
+      id="table-container"
+      className="table-container"
+      style={props}
+    >
       <table className="nasa-main table is-striped is-hoverable">
         <thead>
           <tr>{displayHeader()}</tr>

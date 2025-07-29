@@ -23,6 +23,22 @@ export default function App() {
       setError([true, err.message]);
     }
   }, []);
+  const postLaunchDataFunction = async (body) => {
+    try {
+      const request = await fetch(url + "/launches", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      const dataValue = await request.json();
+      console.log(dataValue);
+      await fetchLaunchData();
+    } catch (err) {
+      setError([true, err.message]);
+    }
+  };
 
   const fetchLaunchData = useCallback(async () => {
     try {
@@ -44,7 +60,12 @@ export default function App() {
   }, [fetchPlanetDataFunction, fetchLaunchData]);
 
   const menuComponents = {
-    Launch: <NasaMain dataState={dataState} />,
+    Launch: (
+      <NasaMain
+        dataState={dataState}
+        postLaunchDataFunction={postLaunchDataFunction}
+      />
+    ),
     Upcoming: <Upcoming dataState={launchDataState} />,
     History: <History dataState={launchDataState} />,
   };

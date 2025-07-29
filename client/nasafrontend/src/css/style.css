@@ -71,3 +71,8 @@ animation-timing-function: linear;
     opacity: 1;
     transition: opacity 1s ease-in;
 }
+
+#table-container {
+    max-height: 80vh;
+    overflow-y: scroll;
+}
