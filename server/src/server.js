@@ -1,12 +1,30 @@
 const { createServer } = require("http");
+const mongoose = require('mongoose');
 const app = require("./app");
 const { loadPlanetsData } = require("./models/planets.model");
+const Mongoose_URL = "mongodb+srv://admin:admin123@cluster0.tcckmtd.mongodb.net/nasa?retryWrites=true&w=majority&appName=Cluster0";
 
 const PORT = process.env.PORT || 8000;
 
 const server = createServer(app);
 
+mongoose.connection.once('open',()=>{
+  console.log("Database connected");
+})
+mongoose.connection.on('error',(err)=>{
+  console.log(err);
+  
+});
+
+
 async function startServer() {
+ await mongoose.connect(Mongoose_URL);
+ //options ,{
+//   useNewUrlParser:true,
+//   useFindAndModify:false,
+//   useCreateIndex:true,
+//   useUnifiedTopology:true
+//  } is set by default in new mongodb 
   await loadPlanetsData();
   server.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}...`);
