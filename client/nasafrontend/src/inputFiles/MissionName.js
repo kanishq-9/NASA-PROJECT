@@ -14,6 +14,7 @@ export default function MissionName({ setMissionName }) {
         type="text"
         value={mission}
         onChange={handleMissionChange}
+        required
       />
     </div>
   );

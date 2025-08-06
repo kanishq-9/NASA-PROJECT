@@ -17,6 +17,7 @@ export default function LaunchDate({ setLaunchDate }) {
         type="date"
         value={currentDate}
         onChange={handleDateChange}
+        required
       />
     </div>
   );

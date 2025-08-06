@@ -19,6 +19,7 @@ export default function Destination({ dataState, setDestination }) {
         className="is-hovered"
         value={selectedValue}
         onChange={handleSelectChange}
+        required
       >
         {renderData(dataState)}
       </select>

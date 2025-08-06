@@ -5,7 +5,7 @@ import History from "./History";
 import "./css/style.css";
 import { useState, useEffect, useCallback } from "react";
 import { fetchURLData } from "./fetchData/fetchdata";
-import ErrorPopUp from "./Errorpopup";
+import ErrorPopUp from "./errorpopup";
 
 export default function App() {
   const [currentMenu, setCurrentMenu] = useState("Launch");

@@ -11,9 +11,10 @@ export default function RocketType({ setRocket }) {
       <input
         className="input is-normal is-hovered"
         type="text"
-        style={{ color: "white" }}
+        // style={{ color: "white" }}
         value={type}
         onChange={onValueChange}
+        required
       />
     </div>
   );
