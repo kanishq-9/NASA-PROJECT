@@ -1,8 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const { parse } = require("csv-parse");
+const planets = require("./planets.mongo");
 
-const planets = [];
+const habitablePlanets = [];
 function isHabitablePlanet(planet) {
   return (
     planet["koi_disposition"] === "CONFIRMED" &&
@@ -21,9 +22,16 @@ function loadPlanetsData() {
           columns: true,
         })
       )
-      .on("data", (data) => {
+      .on("data", async (data) => {
         if (isHabitablePlanet(data)) {
-          planets.push(data);
+          // habitablePlanets.push(data);
+          //create creates multiple data if called again and again
+          // await planets.create({
+            //   kepler_name:data.kepler_name,
+            // });
+            //moongoose provide insert + update = upsert, using updateOne({insert if doesnot exist},{update if exist},{options})
+          savePlanets(data);
+
         }
       })
       .on("error", (err) => {
@@ -35,8 +43,23 @@ function loadPlanetsData() {
   });
 }
 
-function getPlanetsData() {
-  return planets;
+async function getPlanetsData() {
+  //find is a powerful method that mongodb uses
+  return await planets.find({});
+}
+async function savePlanets(data){
+  try{
+        await planets.updateOne({
+            kepler_name:data.kepler_name,
+          },{
+            kepler_name:data.kepler_name,
+          },{
+            upsert: true
+          });
+  }catch(err){
+    console.error(`Could not save planet ${err}`);
+  }
+  
 }
 
 
