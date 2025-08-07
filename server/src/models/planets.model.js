@@ -45,7 +45,10 @@ function loadPlanetsData() {
 
 async function getPlanetsData() {
   //find is a powerful method that mongodb uses
-  return await planets.find({});
+  return await planets.find({},{
+    '_id':0,
+    '__v':0
+  });
 }
 async function savePlanets(data){
   try{

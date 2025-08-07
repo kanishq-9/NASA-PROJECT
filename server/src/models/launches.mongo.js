@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
 
-const launchesSchema = new mongoose.Schema({
+const launchSchema = new mongoose.Schema({
     rocketNumber:{
         type:Number,
         required:true,
-        min:100
     } ,
   mission: {
     type:String,
@@ -37,7 +36,7 @@ const launchesSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Launch', launchesSchema);
+module.exports = mongoose.model('Launch', launchSchema);
 //Launch is the collection name in mongoDB, it has created collection of "launches" in node model and made a connection. Now this has created an object to make CRUD operations on the schemas, so we export it
 //mongo schema and model are classes and objects that provides a way to talk to the documents
 //whereas MVC is a general concept that we can use it for any database or any external datasource. we use them to act as data access layer
