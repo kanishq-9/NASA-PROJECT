@@ -13,22 +13,22 @@ return DEFAULT_LATEST_LAUNCH_NUMBER;
 }
 
 
-let launch = {
-  rocketNumber: 100,
-  mission: "ABC",
-  rocket: "ABC",
-  launchDate: new Date("01-09-2001").toLocaleString("en-US", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }),
-  destination: "Kepler-296 f",
-  customer: ["ISRO", "Potter University"],
-  success: true,
-  upcoming: true,
-};
+// let launch = {
+//   rocketNumber: 100,
+//   mission: "ABC",
+//   rocket: "ABC",
+//   launchDate: new Date("01-09-2001").toLocaleString("en-US", {
+//     year: "numeric",
+//     month: "2-digit",
+//     day: "2-digit",
+//   }),
+//   destination: "Kepler-296 f",
+//   customer: ["ISRO", "Potter University"],
+//   success: true,
+//   upcoming: true,
+// };
 
-saveLaunches(launch);
+// saveLaunches(launch);
 // launches.set(launch.rocketNumber, launch);
 
 async function parseLaunches() {
