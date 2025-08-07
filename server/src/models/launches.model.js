@@ -1,7 +1,7 @@
 const launchesDatabase = require("./launches.mongo");
 const planetsDatabase = require('./planets.mongo');
 
-const launches = new Map(); 
+// const launches = new Map(); 
 // let latestFlightNumber = 100;
 const DEFAULT_LATEST_LAUNCH_NUMBER=100;
 async function getNewFlightNumber() {
@@ -47,7 +47,18 @@ async function saveLaunches(launch) {
     throw new Error("No planets match "+launch.destination);
     
   }
-  await launchesDatabase.updateOne({
+//   await launchesDatabase.updateOne({
+//     //check for duplicate
+//     rocketNumber:launch.rocketNumber
+//   },
+
+//   //insert
+//   launch
+// ,{
+//   upsert:true
+// });
+//similar to update but just outputs the object that launches input and nothing more
+await launchesDatabase.findOneAndUpdate({
     //check for duplicate
     rocketNumber:launch.rocketNumber
   },
@@ -56,7 +67,7 @@ async function saveLaunches(launch) {
   launch
 ,{
   upsert:true
-})
+});
 }
 
 
