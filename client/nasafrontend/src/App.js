@@ -13,7 +13,7 @@ export default function App() {
 
   const [dataState, setDataState] = useState([]);
   const [launchDataState, setLaunchDataState] = useState([]);
-  const url = "http://localhost:8000";
+  const url = "https://localhost:8000";
   const fetchPlanetDataFunction = useCallback(async () => {
     try {
       const planetData = await fetchURLData(url, "planets");

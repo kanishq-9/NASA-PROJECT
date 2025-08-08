@@ -1,12 +1,14 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const helmet = require('helmet');
 const morgan = require("morgan");
 const planetsRouter = require("./routes/planets/planets.router");
 const launchesRouter = require("./routes/launches/launches.router");
 
 const app = express();
 
+app.use(helmet());
 app.use(cors()); //all cross-origin request
 
 //add morgan just after security check for logging data

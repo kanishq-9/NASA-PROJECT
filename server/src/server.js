@@ -1,5 +1,6 @@
-const { createServer } = require("http");
+const { createServer } = require("https");
 require('dotenv').config();
+const fs = require('fs');
 const mongoose = require('mongoose');
 const app = require("./app");
 const { loadPlanetsData } = require("./models/planets.model");
@@ -7,7 +8,10 @@ const Mongoose_URL = process.env.DB_URL;
 
 const PORT = process.env.PORT || 8000;
 
-const server = createServer(app);
+const server = createServer({
+  key:fs.readFileSync('security/key.pem'),
+  cert:fs.readFileSync('security/cert.pem')
+},app);
 
 mongoose.connection.once('open',()=>{
   console.log("Database connected");
@@ -17,7 +21,7 @@ mongoose.connection.on('error',(err)=>{
   
 });
 
-
+//openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365
 async function startServer() {
  await mongoose.connect(Mongoose_URL);
  //options ,{
